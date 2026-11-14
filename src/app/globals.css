@@ -1,0 +1,339 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+ * Design tokens — Teravex Contracting & Services W.L.L
+ * Deep Navy (#0F172A) + Gold/Amber (#D97706) + a Qatar Maroon accent
+ * ---------------------------------------------------------------- */
+@theme {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-navy-950: #070c19;
+  --color-navy-900: #0f172a; /* brand deep navy */
+  --color-navy-800: #142039;
+  --color-navy-700: #1c2b4a;
+  --color-navy-600: #2a3d63;
+
+  --color-gold-50: #fff8eb;
+  --color-gold-100: #fdedc9;
+  --color-gold-200: #fbd88f;
+  --color-gold-300: #f8c05a;
+  --color-gold-400: #f3a72e;
+  --color-gold-500: #e98c0d;
+  --color-gold-600: #d97706; /* brand amber */
+  --color-gold-700: #b35d07;
+
+  --color-maroon-500: #a52449;
+  --color-maroon-600: #8d1b3d; /* Qatar maroon */
+  --color-maroon-700: #6d1530;
+
+  --color-ink: #0f172a;
+  --color-body: #4a5872;
+  --color-line: #e3e8f0;
+  --color-surface: #f5f7fb;
+
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 12px 32px -14px rgb(15 23 42 / 0.16);
+  --shadow-card-hover: 0 2px 6px rgb(15 23 42 / 0.05), 0 28px 60px -24px rgb(15 23 42 / 0.32);
+  --shadow-gold: 0 12px 30px -10px rgb(217 119 6 / 0.6);
+  --shadow-float: 0 24px 60px -20px rgb(0 0 0 / 0.55);
+
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 1s ease-out both;
+  --animate-orbit: orbit 70s linear infinite;
+  --animate-orbit-reverse: orbit 70s linear infinite reverse;
+  --animate-orbit-slow: orbit 120s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee 45s linear infinite;
+  --animate-shine: shine 3.5s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes orbit {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes shine {
+    0% {
+      transform: translateX(-120%) skewX(-20deg);
+    }
+    60%,
+    100% {
+      transform: translateX(220%) skewX(-20deg);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+ * Base
+ * ---------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: #fff;
+    color: var(--color-body);
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--color-ink);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-gold-300);
+    color: var(--color-navy-950);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold-400);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  /* Lock page scroll while a modal dialog is open */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+}
+
+/* ------------------------------------------------------------------
+ * Utilities
+ * ---------------------------------------------------------------- */
+@utility container-x {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility text-gradient-gold {
+  background: linear-gradient(100deg, #fde1a3 0%, #f8c05a 30%, #f3a72e 60%, #d97706 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gold-gradient {
+  background-image: linear-gradient(135deg, #fbd88f 0%, #f3a72e 45%, #d97706 100%);
+}
+
+/* Subtle 8-point star lattice — a nod to Qatari geometric design */
+@utility bg-pattern-star {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.07' stroke-width='1'%3E%3Crect x='22' y='22' width='28' height='28'/%3E%3Crect x='22' y='22' width='28' height='28' transform='rotate(45 36 36)'/%3E%3Cpath d='M0 36h16M56 36h16M36 0v16M36 56v16'/%3E%3Ccircle cx='36' cy='36' r='6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 72px 72px;
+}
+@utility bg-pattern-star-dark {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%230f172a' stroke-opacity='0.06' stroke-width='1'%3E%3Crect x='22' y='22' width='28' height='28'/%3E%3Crect x='22' y='22' width='28' height='28' transform='rotate(45 36 36)'/%3E%3Cpath d='M0 36h16M56 36h16M36 0v16M36 56v16'/%3E%3Ccircle cx='36' cy='36' r='6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 72px 72px;
+}
+@utility bg-grid-lines {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+@utility mask-fade-b {
+  mask-image: linear-gradient(to bottom, #000 30%, transparent 100%);
+}
+@utility mask-radial {
+  mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+}
+@utility mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+@utility text-stroke {
+  -webkit-text-stroke: 1px rgb(255 255 255 / 0.45);
+  color: transparent;
+}
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+ * Components
+ * ---------------------------------------------------------------- */
+@layer components {
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-gold-600);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--color-gold-300), var(--color-gold-600));
+  }
+  .eyebrow-light {
+    color: var(--color-gold-300);
+  }
+
+  /* Form controls */
+  .field-label {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .field {
+    width: 100%;
+    border-radius: 0.875rem;
+    border: 1px solid var(--color-line);
+    background: #fff;
+    padding: 0.8rem 1rem;
+    font-size: 0.9375rem;
+    color: var(--color-ink);
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s,
+      background-color 0.2s;
+  }
+  .field::placeholder {
+    color: #97a3b8;
+  }
+  .field:hover {
+    border-color: #cdd5e2;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-gold-500);
+    box-shadow: 0 0 0 4px rgb(243 167 46 / 0.16);
+  }
+  .field[aria-invalid="true"] {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 4px rgb(220 38 38 / 0.08);
+  }
+  select.field {
+    appearance: none;
+    padding-right: 2.75rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    background-size: 1.1rem;
+  }
+  .field-error {
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #dc2626;
+  }
+
+  /* Native <dialog> modal */
+  .modal {
+    margin: auto;
+    width: min(46rem, calc(100% - 2rem));
+    max-height: min(88vh, 52rem);
+    border: 0;
+    border-radius: 1.75rem;
+    padding: 0;
+    background: #fff;
+    color: var(--color-body);
+    box-shadow: 0 40px 120px -30px rgb(7 12 25 / 0.6);
+    overflow: hidden;
+  }
+  .modal::backdrop {
+    background: rgb(7 12 25 / 0.72);
+    backdrop-filter: blur(6px);
+  }
+  .modal[open] {
+    animation: modal-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .modal[open]::backdrop {
+    animation: fade-in 0.3s ease-out;
+  }
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(24px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+ * Scroll reveal — only hides content when JS is running (see layout)
+ * ---------------------------------------------------------------- */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

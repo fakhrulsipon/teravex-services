@@ -1,0 +1,177 @@
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import type { Metadata } from "next";
+import ContactForm from "@/components/forms/ContactForm";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  TelegramIcon,
+  WhatsAppIcon,
+} from "@/components/ui/BrandIcons";
+import PageHero from "@/components/ui/PageHero";
+import { site, whatsappLink } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Contact Us — Doha Office, Phone & WhatsApp",
+  description:
+    "Contact Teravex Contracting & Services W.L.L in Doha, Qatar. Call or WhatsApp us 24/7, email info@teravexservices.com, or send a message.",
+  alternates: { canonical: "/contact/" },
+};
+
+const cards = [
+  {
+    title: "Visit Our Office",
+    lines: [site.name, `${site.address.line1}, ${site.address.line2}`],
+    Icon: MapPin,
+    href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapQuery)}`,
+    cta: "Get directions",
+  },
+  {
+    title: "Call Us",
+    lines: [site.phoneDisplay, "Available 24/7"],
+    Icon: Phone,
+    href: `tel:${site.phoneHref}`,
+    cta: "Call now",
+  },
+  {
+    title: "WhatsApp",
+    lines: [site.phoneDisplay, "Fastest response"],
+    Icon: WhatsAppIcon,
+    href: whatsappLink("Hello Teravex, I have an enquiry."),
+    cta: "Start chat",
+  },
+  {
+    title: "Email Us",
+    lines: [site.email, "We reply promptly"],
+    Icon: Mail,
+    href: `mailto:${site.email}`,
+    cta: "Send email",
+  },
+];
+
+const socials = [
+  { label: "Facebook", href: site.social.facebook, Icon: FacebookIcon },
+  { label: "Instagram", href: site.social.instagram, Icon: InstagramIcon },
+  { label: "LinkedIn", href: site.social.linkedin, Icon: LinkedinIcon },
+  { label: "Telegram", href: site.social.telegram, Icon: TelegramIcon },
+];
+
+export default function ContactPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Contact Us"
+        crumb="Contact"
+        title={
+          <>
+            Let&apos;s Talk About Your <span className="text-gradient-gold">Workforce Needs</span>
+          </>
+        }
+        text="Our Doha team is available around the clock. Call, WhatsApp, email or send us a message — we'll respond quickly."
+      />
+
+      {/* Contact cards */}
+      <section className="relative z-10 -mt-10">
+        <div className="container-x">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {cards.map(({ title, lines, Icon, href, cta }, i) => {
+              const external = href.startsWith("http");
+              return (
+                <li
+                  key={title}
+                  data-reveal
+                  style={{ "--reveal-delay": `${i * 80}ms` } as React.CSSProperties}
+                >
+                  <a
+                    href={href}
+                    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className="group flex h-full gap-4 rounded-3xl border border-line bg-white p-5 shadow-card transition-all duration-500 hover:-translate-y-1 hover:border-gold-300 hover:shadow-card-hover sm:flex-col sm:gap-0 sm:p-6"
+                  >
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-navy-900 text-gold-300 transition-colors group-hover:bg-gold-gradient group-hover:text-navy-950">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <div className="flex min-w-0 flex-1 flex-col">
+                      <h2 className="text-lg font-bold sm:mt-5">{title}</h2>
+                      {lines.map((l, j) => (
+                        <span
+                          key={l}
+                          className={`block break-words ${j === 0 ? "mt-1 font-semibold text-navy-900" : "mt-0.5 text-sm"}`}
+                        >
+                          {l}
+                        </span>
+                      ))}
+                      <span className="mt-auto pt-3 text-sm font-semibold text-gold-700 underline-offset-4 group-hover:underline sm:pt-4">
+                        {cta} →
+                      </span>
+                    </div>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
+      {/* Form + map */}
+      <section className="py-20 lg:py-28">
+        <div className="container-x grid gap-8 lg:grid-cols-2 lg:gap-10">
+          <div data-reveal className="rounded-[2rem] border border-line bg-white p-6 shadow-card sm:p-10">
+            <span className="eyebrow">Send a Message</span>
+            <h2 className="mb-8 mt-3 text-2xl font-extrabold sm:text-3xl">How Can We Help?</h2>
+            <ContactForm />
+          </div>
+
+          <div
+            data-reveal
+            style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
+            className="flex flex-col gap-6"
+          >
+            <div className="relative min-h-[22rem] flex-1 overflow-hidden rounded-[2rem] border border-line bg-surface shadow-card">
+              <iframe
+                title="Teravex office location — Doha, Qatar"
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&z=12&output=embed`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 h-full w-full border-0 grayscale-[35%]"
+              />
+              <div className="pointer-events-none absolute right-4 top-4 flex items-center gap-3 rounded-2xl bg-navy-950/90 p-3 pr-4 text-white shadow-float backdrop-blur">
+                <span className="grid h-9 w-9 place-items-center rounded-xl bg-gold-gradient text-navy-950">
+                  <MapPin className="h-4 w-4" aria-hidden="true" />
+                </span>
+                <span className="text-sm leading-tight">
+                  <span className="block font-bold">Teravex HQ</span>
+                  <span className="text-white/60">Doha, State of Qatar</span>
+                </span>
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden rounded-[2rem] bg-navy-950 p-6 text-white sm:p-8">
+              <div aria-hidden="true" className="absolute inset-0 bg-pattern-star opacity-70" />
+              <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-3">
+                  <Clock className="h-6 w-6 shrink-0 text-gold-300" aria-hidden="true" />
+                  <div>
+                    <p className="font-bold">24/7 Rapid Deployment Support</p>
+                    <p className="text-sm text-white/60">Follow us for updates</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  {socials.map(({ label, href, Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      aria-label={label}
+                      className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-white/75 transition-all hover:-translate-y-0.5 hover:border-gold-400 hover:bg-gold-400 hover:text-navy-950"
+                    >
+                      <Icon />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
