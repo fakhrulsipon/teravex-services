@@ -28,8 +28,12 @@ function LogoCard({ c }: { c: Company }) {
 /** "Trusted by" logo wall — infinite two-way marquee; a static grid for reduced-motion users. */
 export default function TrustedCompanies() {
   return (
-    <section aria-labelledby="trusted-heading" className="relative overflow-hidden pt-16 pb-6 sm:pt-20 lg:pt-24">
-      <div className="container-x">
+    <section
+      aria-labelledby="trusted-heading"
+      className="relative mt-16 overflow-hidden border-y border-line bg-surface py-14 sm:mt-20 sm:py-16 lg:mt-24 lg:py-20"
+    >
+      <div aria-hidden="true" className="absolute inset-0 bg-pattern-star-dark mask-fade-b" />
+      <div className="container-x relative">
         <div data-reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">Trusted By</span>
           <h2 id="trusted-heading" className="mt-4 text-2xl font-extrabold leading-tight sm:text-3xl lg:text-4xl">
@@ -43,7 +47,7 @@ export default function TrustedCompanies() {
       </div>
 
       {/* Animated marquee (default) */}
-      <div data-reveal className="group mt-10 space-y-4 mask-fade-x motion-reduce:hidden sm:mt-12 sm:space-y-6">
+      <div data-reveal className="group relative mt-10 space-y-4 mask-fade-x motion-reduce:hidden sm:mt-12 sm:space-y-6">
         {rows.map((row, r) => (
           <div
             key={r}
@@ -71,7 +75,7 @@ export default function TrustedCompanies() {
       {/* Static grid for users who prefer reduced motion */}
       <ul
         aria-label="Our trusted clients"
-        className="container-x mt-10 hidden grid-cols-2 justify-items-center gap-4 motion-reduce:grid sm:grid-cols-3 lg:grid-cols-5"
+        className="container-x relative mt-10 hidden grid-cols-2 justify-items-center gap-4 motion-reduce:grid sm:grid-cols-3 lg:grid-cols-5"
       >
         {trustedCompanies.map((c) => (
           <li key={c.name}>
@@ -82,7 +86,7 @@ export default function TrustedCompanies() {
 
       <p
         data-reveal
-        className="container-x mt-8 flex items-center justify-center gap-2 text-center text-xs font-medium text-body sm:text-sm"
+        className="container-x relative mt-8 flex items-center justify-center gap-2 text-center text-xs font-medium text-body sm:text-sm"
       >
         <BadgeCheck className="h-4 w-4 shrink-0 text-gold-600" aria-hidden="true" />
         {trustedCompanies.length}+ companies rely on our workforce every day
