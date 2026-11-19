@@ -5,6 +5,7 @@ import QuickEnquiry from "@/components/home/QuickEnquiry";
 import RolesMarquee from "@/components/home/RolesMarquee";
 import ServicesExplorer from "@/components/home/ServicesExplorer";
 import StatsBar from "@/components/home/StatsBar";
+import TrustedCompanies from "@/components/home/TrustedCompanies";
 import Clients from "@/components/sections/Clients";
 import Nationalities from "@/components/sections/Nationalities";
 import ProcessSteps from "@/components/sections/ProcessSteps";
@@ -19,6 +20,7 @@ export default function HomePage() {
     <>
       <Hero />
       <StatsBar />
+      <TrustedCompanies />
       <AboutIntro />
 
       <section id="services" className="relative overflow-hidden bg-surface py-24 lg:py-32">
