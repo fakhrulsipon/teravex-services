@@ -52,18 +52,26 @@ export const stats = [
 export const processSteps = [
   {
     title: "Share Your Requirement",
+    photo: "step-requirement",
+    photoAlt: "Engineers reviewing a project blueprint on a construction site",
     text: "Tell us the roles, headcount, nationality preference and project duration.",
   },
   {
     title: "Source & Trade-Test",
+    photo: "step-sourcing",
+    photoAlt: "Skilled welder at work with sparks flying",
     text: "We shortlist from our ready pool or recruit overseas, then trade-test every candidate.",
   },
   {
     title: "Visa & Mobilization",
+    photo: "step-visa",
+    photoAlt: "Open passport with travel visa stamps",
     text: "Medical clearance, Qatar work visa processing and onboarding — all handled by us.",
   },
   {
     title: "Deploy & Support",
+    photo: "step-deploy",
+    photoAlt: "Two workers in safety gear walking across a construction site",
     text: "Workers report on site, backed by 24/7 support and quick replacements.",
   },
 ];

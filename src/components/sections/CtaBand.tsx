@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { LinkButton } from "@/components/ui/Button";
+import Photo from "@/components/ui/Photo";
 import { whatsappLink } from "@/lib/site";
 
 type Props = { title?: string; text?: string };
@@ -17,7 +18,9 @@ export default function CtaBand({
           className="relative isolate overflow-hidden rounded-[2rem] bg-navy-950 px-6 py-14 text-center sm:px-12 lg:px-20 lg:py-20"
         >
           <div aria-hidden="true" className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-pattern-star opacity-80" />
+            <Photo name="doha-dusk" alt="" sizes="(min-width: 1280px) 80rem, 100vw" className="absolute inset-0 h-full w-full opacity-50" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40" />
+            <div className="absolute inset-0 bg-pattern-star opacity-40" />
             <div className="absolute -left-20 -top-28 h-80 w-80 rounded-full bg-maroon-600/50 blur-3xl" />
             <div className="absolute -bottom-32 -right-16 h-96 w-96 rounded-full bg-gold-500/30 blur-3xl" />
           </div>

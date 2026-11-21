@@ -8,7 +8,8 @@ import {
   TelegramIcon,
   WhatsAppIcon,
 } from "@/components/ui/BrandIcons";
-import PageHero from "@/components/ui/PageHero";
+import ImageBanner from "@/components/ui/ImageBanner";
+import Photo from "@/components/ui/Photo";
 import { site, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -21,31 +22,27 @@ export const metadata: Metadata = {
 const cards = [
   {
     title: "Visit Our Office",
-    lines: [site.name, `${site.address.line1}, ${site.address.line2}`],
+    detail: `${site.address.line1}, ${site.address.line2}`,
     Icon: MapPin,
     href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapQuery)}`,
-    cta: "Get directions",
   },
   {
     title: "Call Us",
-    lines: [site.phoneDisplay, "Available 24/7"],
+    detail: site.phoneDisplay,
     Icon: Phone,
     href: `tel:${site.phoneHref}`,
-    cta: "Call now",
   },
   {
     title: "WhatsApp",
-    lines: [site.phoneDisplay, "Fastest response"],
+    detail: site.phoneDisplay,
     Icon: WhatsAppIcon,
     href: whatsappLink("Hello Teravex, I have an enquiry."),
-    cta: "Start chat",
   },
   {
     title: "Email Us",
-    lines: [site.email, "We reply promptly"],
+    detail: site.email,
     Icon: Mail,
     href: `mailto:${site.email}`,
-    cta: "Send email",
   },
 ];
 
@@ -59,51 +56,45 @@ const socials = [
 export default function ContactPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Contact Us"
-        crumb="Contact"
-        title={
-          <>
-            Let&apos;s Talk About Your <span className="text-gradient-gold">Workforce Needs</span>
-          </>
-        }
-        text="Our Doha team is available around the clock. Call, WhatsApp, email or send us a message — we'll respond quickly."
+      <ImageBanner
+        src="/banners/contact"
+        alt="Two construction workers in safety gear shaking hands"
+        title="Contact Us"
+        focus="50% 35%"
       />
 
       {/* Contact cards */}
       <section className="relative z-10 -mt-10">
         <div className="container-x">
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {cards.map(({ title, lines, Icon, href, cta }, i) => {
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {cards.map(({ title, detail, Icon, href }, i) => {
               const external = href.startsWith("http");
               return (
                 <li
                   key={title}
                   data-reveal
-                  style={{ "--reveal-delay": `${i * 80}ms` } as React.CSSProperties}
+                  style={
+                    { "--reveal-delay": `${i * 80}ms` } as React.CSSProperties
+                  }
                 >
                   <a
                     href={href}
-                    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="group flex h-full gap-4 rounded-3xl border border-line bg-white p-5 shadow-card transition-all duration-500 hover:-translate-y-1 hover:border-gold-300 hover:shadow-card-hover sm:flex-col sm:gap-0 sm:p-6"
+                    {...(external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className="group flex h-full items-center gap-3 rounded-2xl border border-line bg-white p-4 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-300 hover:shadow-card-hover"
                   >
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-navy-900 text-gold-300 transition-colors group-hover:bg-gold-gradient group-hover:text-navy-950">
-                      <Icon className="h-5 w-5" />
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-navy-900 text-gold-300 transition-colors group-hover:bg-gold-gradient group-hover:text-navy-950">
+                      <Icon className="h-4 w-4" />
                     </span>
-                    <div className="flex min-w-0 flex-1 flex-col">
-                      <h2 className="text-lg font-bold sm:mt-5">{title}</h2>
-                      {lines.map((l, j) => (
-                        <span
-                          key={l}
-                          className={`block break-words ${j === 0 ? "mt-1 font-semibold text-navy-900" : "mt-0.5 text-sm"}`}
-                        >
-                          {l}
-                        </span>
-                      ))}
-                      <span className="mt-auto pt-3 text-sm font-semibold text-gold-700 underline-offset-4 group-hover:underline sm:pt-4">
-                        {cta} →
+                    <span className="min-w-0 leading-tight">
+                      <span className="block text-sm font-bold text-navy-900">
+                        {title}
                       </span>
-                    </div>
+                      <span className="mt-0.5 block truncate text-[0.8rem] text-body">
+                        {detail}
+                      </span>
+                    </span>
                   </a>
                 </li>
               );
@@ -115,9 +106,14 @@ export default function ContactPage() {
       {/* Form + map */}
       <section className="py-20 lg:py-28">
         <div className="container-x grid gap-8 lg:grid-cols-2 lg:gap-10">
-          <div data-reveal className="rounded-[2rem] border border-line bg-white p-6 shadow-card sm:p-10">
+          <div
+            data-reveal
+            className="rounded-[2rem] border border-line bg-white p-6 shadow-card sm:p-10"
+          >
             <span className="eyebrow">Send a Message</span>
-            <h2 className="mb-8 mt-3 text-2xl font-extrabold sm:text-3xl">How Can We Help?</h2>
+            <h2 className="mb-8 mt-3 text-2xl font-extrabold sm:text-3xl">
+              How Can We Help?
+            </h2>
             <ContactForm />
           </div>
 
@@ -145,14 +141,29 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[2rem] bg-navy-950 p-6 text-white sm:p-8">
-              <div aria-hidden="true" className="absolute inset-0 bg-pattern-star opacity-70" />
+            <div className="relative isolate overflow-hidden rounded-[2rem] bg-navy-950 p-6 text-white sm:p-8">
+              <Photo
+                name="support-team"
+                alt=""
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                style={{ objectPosition: "50% 30%" }}
+                className="absolute inset-0 -z-10 h-full w-full opacity-40"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/50"
+              />
               <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-3">
-                  <Clock className="h-6 w-6 shrink-0 text-gold-300" aria-hidden="true" />
+                  <Clock
+                    className="h-6 w-6 shrink-0 text-gold-300"
+                    aria-hidden="true"
+                  />
                   <div>
                     <p className="font-bold">24/7 Rapid Deployment Support</p>
-                    <p className="text-sm text-white/60">Follow us for updates</p>
+                    <p className="text-sm text-white/60">
+                      Follow us for updates
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">

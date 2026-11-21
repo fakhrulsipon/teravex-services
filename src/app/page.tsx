@@ -4,7 +4,7 @@ import Hero from "@/components/home/Hero";
 import QuickEnquiry from "@/components/home/QuickEnquiry";
 import RolesMarquee from "@/components/home/RolesMarquee";
 import ServicesExplorer from "@/components/home/ServicesExplorer";
-import StatsBar from "@/components/home/StatsBar";
+// import StatsBar from "@/components/home/StatsBar"; // hidden for now — uncomment together with <StatsBar /> below to bring it back
 import TrustedCompanies from "@/components/home/TrustedCompanies";
 import Clients from "@/components/sections/Clients";
 import Nationalities from "@/components/sections/Nationalities";
@@ -19,7 +19,11 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <StatsBar />
+      {/*
+        <StatsBar /> — stats section (5,000+ workforce, 8+ nationalities…) hidden for now.
+        To bring it back: uncomment it and its import, then restore the extra space it overlaps into:
+        Hero section "pb-20 … lg:pb-28" → "pb-36 … lg:pb-44", and TrustedCompanies "mt-16 sm:mt-20 lg:mt-24".
+      */}
       <TrustedCompanies />
       <AboutIntro />
 
@@ -30,10 +34,9 @@ export default function HomePage() {
             eyebrow="What We Do"
             title={
               <>
-                Our Core Services &amp; <span className="text-gold-600">Job Categories</span>
+                Our Core <span className="text-gold-600">Services</span>
               </>
             }
-            text="Eight specialised service lines, one reliable partner. Tap any service to see the roles we supply."
           />
           <ServicesExplorer />
         </div>

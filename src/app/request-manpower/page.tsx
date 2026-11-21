@@ -4,6 +4,7 @@ import ManpowerForm from "@/components/forms/ManpowerForm";
 import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { LinkButton } from "@/components/ui/Button";
 import ImageBanner from "@/components/ui/ImageBanner";
+import Photo from "@/components/ui/Photo";
 import { processSteps } from "@/data/company";
 import { site, whatsappLink } from "@/lib/site";
 
@@ -25,12 +26,15 @@ export default function RequestManpowerPage() {
     <>
       <ImageBanner
         src="/banners/request-manpower"
-        alt="Construction workers on a building site at sunset"
-        title="Request Manpower — Tell Us What You Need, We'll Build Your Team"
-        scrollTo="request-form"
+        alt="Two engineers in hard hats reviewing blueprints on a construction site"
+        title="Request Manpower"
+        focus="50% 40%"
       />
 
-      <section id="request-form" className="relative scroll-mt-20 bg-surface py-16 lg:py-24">
+      <section
+        id="request-form"
+        className="relative scroll-mt-20 bg-surface py-16 lg:py-24"
+      >
         <div className="container-x grid items-start gap-8 lg:grid-cols-[1fr_22rem] lg:gap-10">
           <ManpowerForm />
 
@@ -44,28 +48,50 @@ export default function RequestManpowerPage() {
                       {i + 1}
                     </span>
                     <div>
-                      <p className="text-sm font-bold text-navy-900">{s.title}</p>
-                      <p className="mt-0.5 text-[0.82rem] leading-relaxed">{s.text}</p>
+                      <p className="text-sm font-bold text-navy-900">
+                        {s.title}
+                      </p>
+                      <p className="mt-0.5 text-[0.82rem] leading-relaxed">
+                        {s.text}
+                      </p>
                     </div>
                   </li>
                 ))}
               </ol>
             </div>
 
-            <div className="relative overflow-hidden rounded-[1.75rem] bg-navy-950 p-6 text-white sm:p-7">
-              <div aria-hidden="true" className="absolute inset-0 bg-pattern-star opacity-70" />
-              <div aria-hidden="true" className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gold-500/25 blur-3xl" />
+            <div className="relative isolate overflow-hidden rounded-[1.75rem] bg-navy-950 p-6 pt-40 text-white sm:p-7 sm:pt-44">
+              <Photo
+                name="support-agent"
+                alt=""
+                sizes="(min-width: 1024px) 22rem, 100vw"
+                style={{ objectPosition: "60% 30%" }}
+                className="absolute inset-x-0 top-0 -z-10 h-64 w-full"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-navy-950/90 to-navy-950"
+              />
               <div className="relative">
-                <h2 className="text-lg font-extrabold text-white">Prefer to Talk?</h2>
-                <p className="mt-1 text-sm text-white/65">Our team is available 24/7.</p>
+                <h2 className="text-lg font-extrabold text-white">
+                  Prefer to Talk?
+                </h2>
+                <p className="mt-1 text-sm text-white/65">
+                  Our team is available 24/7.
+                </p>
                 <div className="mt-5 flex flex-col gap-3">
                   <LinkButton
-                    href={whatsappLink("Hello Teravex, I would like to request manpower.")}
+                    href={whatsappLink(
+                      "Hello Teravex, I would like to request manpower.",
+                    )}
                     variant="whatsapp"
                   >
                     <WhatsAppIcon className="h-5 w-5" /> WhatsApp Us
                   </LinkButton>
-                  <LinkButton href={`tel:${site.phoneHref}`} variant="outline-light">
+                  <LinkButton
+                    href={`tel:${site.phoneHref}`}
+                    variant="outline-light"
+                  >
                     <Phone className="h-4 w-4" /> {site.phoneDisplay}
                   </LinkButton>
                   <a
@@ -80,7 +106,10 @@ export default function RequestManpowerPage() {
 
             <ul className="space-y-3 rounded-[1.75rem] border border-line bg-white p-6 sm:p-7">
               {trust.map(({ text, Icon }) => (
-                <li key={text} className="flex items-center gap-3 text-sm font-semibold text-navy-900">
+                <li
+                  key={text}
+                  className="flex items-center gap-3 text-sm font-semibold text-navy-900"
+                >
                   <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gold-50 text-gold-600 ring-1 ring-gold-200/70">
                     <Icon className="h-4 w-4" aria-hidden="true" />
                   </span>

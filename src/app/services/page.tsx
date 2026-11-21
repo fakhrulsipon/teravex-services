@@ -1,12 +1,11 @@
 import { Search } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import CtaBand from "@/components/sections/CtaBand";
 import JobDirectory from "@/components/services/JobDirectory";
 import ServiceDetail from "@/components/services/ServiceDetail";
-import PageHero from "@/components/ui/PageHero";
+import ImageBanner from "@/components/ui/ImageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { directoryRoles, services } from "@/data/services";
+import { services } from "@/data/services";
 
 export const metadata: Metadata = {
   title: "Services — Manpower Supply, Staffing & Recruitment in Qatar",
@@ -15,35 +14,15 @@ export const metadata: Metadata = {
   alternates: { canonical: "/services/" },
 };
 
-const heroStats = [
-  { value: String(services.length), label: "Service lines" },
-  { value: String(directoryRoles.length), label: "Positions listed" },
-  { value: "8+", label: "Nationalities" },
-  { value: "24/7", label: "Deployment support" },
-];
-
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Our Services"
-        crumb="Services"
-        title={
-          <>
-            Complete Workforce Solutions for <span className="text-gradient-gold">Every Sector</span>
-          </>
-        }
-        text="From 5-star hotels to oil & gas sites — eight specialised service lines backed by a 5,000+ strong, multi-national workforce ready to deploy across Qatar."
-      >
-        <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 backdrop-blur">
-          {heroStats.map((s) => (
-            <div key={s.label} className="bg-navy-950/60 p-5 sm:p-6">
-              <dt className="text-xs font-medium uppercase tracking-wider text-white/50">{s.label}</dt>
-              <dd className="mt-1 text-3xl font-extrabold text-gradient-gold">{s.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </PageHero>
+      <ImageBanner
+        src="/banners/services"
+        alt="Busy construction site with workers, cranes and equipment"
+        title="Our Services"
+        focus="50% 50%"
+      />
 
       {/* Sticky sector navigation */}
       <nav
@@ -64,9 +43,12 @@ export default function ServicesPage() {
               <li key={s.slug}>
                 <Link
                   href={`#${s.slug}`}
-                  className="inline-flex items-center gap-2 whitespace-nowrap rounded-full px-3 py-2 text-sm font-semibold text-navy-900 transition-colors hover:bg-gold-50 hover:text-gold-700 xl:px-3.5"
+                  className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-2 text-sm font-semibold text-navy-900 transition-colors hover:bg-gold-50 hover:text-gold-700 xl:px-2.5"
                 >
-                  <s.icon className="h-4 w-4 text-gold-600" aria-hidden="true" />
+                  <s.icon
+                    className="h-4 w-4 text-gold-600"
+                    aria-hidden="true"
+                  />
                   {s.navLabel}
                 </Link>
               </li>
@@ -75,13 +57,17 @@ export default function ServicesPage() {
         </div>
       </nav>
 
-      <section id="directory" className="scroll-mt-32 bg-surface py-20 lg:py-28">
+      <section
+        id="directory"
+        className="scroll-mt-32 bg-surface py-20 lg:py-28"
+      >
         <div className="container-x">
           <SectionHeading
             eyebrow="Job Directory"
             title={
               <>
-                Find the Exact Position <span className="text-gold-600">You Need</span>
+                Find the Exact Position{" "}
+                <span className="text-gold-600">You Need</span>
               </>
             }
             text="Search by role or filter by sector, then request staff in one click. Don't see a role? We source beyond this list."
@@ -91,15 +77,13 @@ export default function ServicesPage() {
       </section>
 
       {services.map((s, i) => (
-        <ServiceDetail key={s.slug} service={s} index={i} total={services.length} />
-      ))}
-
-      <div className="bg-white pt-4">
-        <CtaBand
-          title="Can't Find the Role You Need?"
-          text="Our recruitment network spans 8+ countries. Share your requirement and we'll source, trade-test and deploy the right people."
+        <ServiceDetail
+          key={s.slug}
+          service={s}
+          index={i}
+          total={services.length}
         />
-      </div>
+      ))}
     </>
   );
 }

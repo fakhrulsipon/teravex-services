@@ -23,8 +23,8 @@ export default function Logo({ id = "header", className = "" }: { id?: string; c
     <Link href="/" className={`group inline-flex items-center gap-3 ${className}`} aria-label="Teravex — Home">
       <LogoMark id={id} className="h-10 w-10 shrink-0 transition-transform duration-500 group-hover:rotate-[30deg]" />
       <span className="flex flex-col leading-none">
-        <span className="text-[1.3rem] font-extrabold tracking-[0.2em] text-white">TERAVEX</span>
-        <span className="mt-1 text-[0.56rem] font-semibold tracking-[0.2em] text-gold-300/90">
+        <span className="text-[1.3rem] font-[800] tracking-[0.2em] text-white">TERAVEX</span>
+        <span className="mt-1 text-[0.56rem] font-[600] tracking-[0.2em] text-gold-300/90">
           CONTRACTING &amp; SERVICES W.L.L
         </span>
       </span>

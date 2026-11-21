@@ -1,7 +1,9 @@
 import { Handshake } from "lucide-react";
+import Photo from "@/components/ui/Photo";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { clients } from "@/data/company";
 
+/** Clients & partners — boardroom photo beside the client cards (no background image). */
 export default function Clients() {
   return (
     <section className="py-24 lg:py-32">
@@ -10,37 +12,51 @@ export default function Clients() {
           eyebrow="Clients & Partners"
           title={
             <>
-              Strategic Collaborations &amp; <span className="text-gold-600">Trusted Relationships</span>
+              Trusted by <span className="text-gold-600">Leading Names</span>
             </>
           }
-          text="Trusted by industry leaders across construction, energy and facility management in Qatar."
         />
 
-        <ul className="mt-14 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
-          {clients.map((c, i) => (
-            <li
-              key={c.name}
-              data-reveal
-              style={{ "--reveal-delay": `${i * 80}ms` } as React.CSSProperties}
-              className="group flex flex-col items-center justify-start rounded-3xl border border-line bg-white px-4 py-8 text-center transition-all duration-500 hover:-translate-y-1 hover:border-gold-300 hover:shadow-card-hover sm:py-10"
-            >
-              {/* Monogram placeholder — swap for the official logo file when available */}
-              <span className="grid h-16 w-16 place-items-center rounded-2xl bg-navy-900 text-lg font-black tracking-tight text-white transition-all duration-500 group-hover:bg-gold-gradient group-hover:text-navy-950 sm:h-20 sm:w-20 sm:text-xl">
-                {c.mark}
+        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+          <figure
+            data-reveal
+            className="relative isolate min-h-[18rem] overflow-hidden rounded-[2rem] bg-navy-950 shadow-card-hover sm:min-h-[22rem]"
+          >
+            <Photo
+              name="boardroom"
+              alt="Business partners meeting around a boardroom table"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="absolute inset-0 -z-10 h-full w-full"
+            />
+            <figcaption className="absolute bottom-5 left-5 right-5 flex items-center gap-3 rounded-2xl border border-white/15 bg-navy-950/65 p-3 pr-4 text-white shadow-float backdrop-blur-md sm:bottom-6 sm:left-6 sm:right-auto">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gold-gradient text-navy-950">
+                <Handshake className="h-5 w-5" aria-hidden="true" />
               </span>
-              <p className="mt-5 text-base font-extrabold text-navy-900 sm:text-lg">{c.name}</p>
-              <p className="mt-1 text-xs font-medium uppercase tracking-wider text-body/80">{c.full}</p>
-            </li>
-          ))}
-        </ul>
+              <span className="leading-tight">
+                <span className="block text-sm font-bold">Long-Term Partnerships</span>
+                <span className="block text-xs text-white/65">Reliable · Compliant · Rapid</span>
+              </span>
+            </figcaption>
+          </figure>
 
-        <p
-          data-reveal
-          className="mx-auto mt-10 flex max-w-xl items-center justify-center gap-2 text-center text-sm text-body"
-        >
-          <Handshake className="h-4 w-4 shrink-0 text-gold-600" aria-hidden="true" />
-          Long-term partnerships built on reliability, compliance and rapid response.
-        </p>
+          <ul className="grid grid-cols-2 gap-3 sm:gap-4">
+            {clients.map((c, i) => (
+              <li
+                key={c.name}
+                data-reveal
+                style={{ "--reveal-delay": `${(i % 2) * 80}ms` } as React.CSSProperties}
+                className="flex flex-col items-center justify-center rounded-3xl border border-line bg-white px-4 py-7 text-center shadow-card transition-all duration-500 hover:-translate-y-1 hover:border-gold-300 hover:shadow-card-hover"
+              >
+                {/* Monogram placeholder — swap for the official logo file when available */}
+                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gold-gradient text-base font-black tracking-tight text-navy-950 shadow-gold sm:h-16 sm:w-16 sm:text-lg">
+                  {c.mark}
+                </span>
+                <p className="mt-4 text-base font-extrabold text-navy-900 sm:text-lg">{c.name}</p>
+                <p className="mt-1 text-[0.7rem] font-medium uppercase tracking-wider text-body">{c.full}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

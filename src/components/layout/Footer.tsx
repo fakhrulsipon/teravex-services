@@ -8,6 +8,7 @@ import { site, whatsappLink } from "@/lib/site";
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Services", href: "/services" },
   { label: "Job Directory", href: "/services#directory" },
   { label: "Request Manpower", href: "/request-manpower" },

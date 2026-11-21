@@ -30,7 +30,7 @@ export default function TrustedCompanies() {
   return (
     <section
       aria-labelledby="trusted-heading"
-      className="relative mt-16 overflow-hidden border-y border-line bg-surface py-14 sm:mt-20 sm:py-16 lg:mt-24 lg:py-20"
+      className="relative overflow-hidden border-y border-line bg-surface py-14 sm:py-16 lg:py-20"
     >
       <div aria-hidden="true" className="absolute inset-0 bg-pattern-star-dark mask-fade-b" />
       <div className="container-x relative">
