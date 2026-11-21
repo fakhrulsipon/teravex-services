@@ -1,3 +1,4 @@
+import Photo from "@/components/ui/Photo";
 import { directoryRoles } from "@/data/services";
 
 const unique = Array.from(new Set(directoryRoles.map((r) => r.role)));
@@ -8,7 +9,9 @@ const rows = [unique.slice(0, half), unique.slice(half)];
 export default function RolesMarquee() {
   return (
     <section aria-label="Roles we supply" className="relative overflow-hidden bg-navy-950 py-10 sm:py-14">
-      <div aria-hidden="true" className="absolute inset-0 bg-pattern-star opacity-50" />
+      <Photo name="construction" alt="" sizes="100vw" className="absolute inset-0 h-full w-full opacity-45" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/70 to-navy-950" />
+      <div aria-hidden="true" className="absolute inset-0 bg-pattern-star opacity-30" />
       <div className="relative space-y-4 mask-fade-x">
         {rows.map((row, r) => (
           <div key={r} className="flex w-max animate-marquee" style={r ? { animationDirection: "reverse" } : undefined}>

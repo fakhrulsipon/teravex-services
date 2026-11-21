@@ -1,4 +1,5 @@
 import { ClipboardList, PlaneTakeoff, UserCheck, Zap } from "lucide-react";
+import Photo from "@/components/ui/Photo";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { processSteps } from "@/data/company";
 
@@ -15,14 +16,9 @@ export default function ProcessSteps() {
               From Requirement to Deployment in <span className="text-gold-600">4 Simple Steps</span>
             </>
           }
-          text="A streamlined, fully compliant process that gets the right people on your site — fast."
         />
 
-        <ol className="relative mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          <span
-            aria-hidden="true"
-            className="absolute left-[12.5%] right-[12.5%] top-10 hidden h-px border-t-2 border-dashed border-gold-300 lg:block"
-          />
+        <ol className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step, i) => {
             const Icon = icons[i];
             return (
@@ -30,18 +26,32 @@ export default function ProcessSteps() {
                 key={step.title}
                 data-reveal
                 style={{ "--reveal-delay": `${i * 110}ms` } as React.CSSProperties}
-                className="relative text-center"
+                className="group relative overflow-hidden rounded-3xl border border-line bg-white shadow-card transition-all duration-500 hover:-translate-y-1.5 hover:border-gold-300 hover:shadow-card-hover"
               >
-                <div className="relative mx-auto grid h-20 w-20 place-items-center rounded-full bg-white shadow-card ring-1 ring-line">
-                  <span className="grid h-14 w-14 place-items-center rounded-full bg-navy-900 text-gold-300">
-                    <Icon className="h-6 w-6" aria-hidden="true" />
-                  </span>
-                  <span className="absolute -right-1 -top-1 grid h-7 w-7 place-items-center rounded-full bg-gold-gradient text-xs font-extrabold text-navy-950 shadow-gold">
-                    {i + 1}
+                <div className="relative isolate aspect-[4/3] overflow-hidden bg-navy-950">
+                  <Photo
+                    name={step.photo}
+                    alt={step.photoAlt}
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className="absolute inset-0 -z-10 h-full w-full transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+                  />
+                  <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
+                  <span
+                    aria-hidden="true"
+                    className="absolute bottom-3 right-4 text-5xl font-black leading-none text-white/25"
+                  >
+                    {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="mt-6 text-lg font-bold">{step.title}</h3>
-                <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed">{step.text}</p>
+
+                <div className="relative px-5 pb-6 pt-9">
+                  <span className="absolute -top-6 left-5 grid h-12 w-12 place-items-center rounded-2xl bg-gold-gradient text-navy-950 shadow-gold ring-4 ring-white">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-gold-700">Step {i + 1}</p>
+                  <h3 className="mt-1 text-lg font-bold">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed">{step.text}</p>
+                </div>
               </li>
             );
           })}

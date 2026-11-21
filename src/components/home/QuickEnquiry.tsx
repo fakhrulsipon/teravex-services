@@ -1,6 +1,7 @@
 import { Mail, Phone } from "lucide-react";
 import QuickEnquiryForm from "@/components/forms/QuickEnquiryForm";
 import { WhatsAppIcon } from "@/components/ui/BrandIcons";
+import Photo from "@/components/ui/Photo";
 import { site, whatsappLink } from "@/lib/site";
 
 const channels = [
@@ -19,7 +20,9 @@ export default function QuickEnquiry() {
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 py-24 lg:py-32">
       <div aria-hidden="true" className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-pattern-star opacity-70" />
+        <Photo name="support-team" alt="" sizes="100vw" style={{ objectPosition: "50% 30%" }} className="absolute inset-0 h-full w-full opacity-70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/75 to-navy-950/30" />
+        <div className="absolute inset-0 bg-pattern-star opacity-40" />
         <div className="absolute -left-32 top-0 h-[28rem] w-[28rem] rounded-full bg-maroon-600/40 blur-3xl" />
         <div className="absolute -right-24 bottom-0 h-[30rem] w-[30rem] rounded-full bg-gold-500/20 blur-3xl" />
       </div>
@@ -30,12 +33,8 @@ export default function QuickEnquiry() {
           <h2 className="mt-4 text-3xl font-extrabold leading-[1.15] text-white sm:text-4xl lg:text-5xl">
             Need Workers? <span className="text-gradient-gold">Get a Quote in Minutes.</span>
           </h2>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
-            Tell us the sector and headcount — our team responds round the clock with available profiles,
-            timelines and a tailored quote.
-          </p>
 
-          <ul className="mt-10 grid gap-3 sm:max-w-md">
+          <ul className="mt-8 grid gap-3 sm:max-w-md">
             {channels.map(({ label, value, href, Icon, external }) => (
               <li key={label}>
                 <a
