@@ -22,8 +22,7 @@ import Clients from "@/components/sections/Clients";
 import CtaBand from "@/components/sections/CtaBand";
 import Nationalities from "@/components/sections/Nationalities";
 import Counter from "@/components/ui/Counter";
-import ImageBanner from "@/components/ui/ImageBanner";
-import Photo from "@/components/ui/Photo";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { stats } from "@/data/company";
 import { site } from "@/lib/site";
@@ -111,17 +110,20 @@ const reasons = [
 export default function AboutPage() {
   return (
     <>
-      <ImageBanner
-        src="/banners/about"
-        alt="Traditional dhow boat sailing in front of the Doha skyline"
-        title="About Teravex — Your Reliable Partner in Total Workforce & Contracting Solutions"
-        scrollTo="who-we-are"
-        scrollLabel="Scroll to who we are"
-        focus="55% 60%"
+      <PageHero
+        eyebrow="About Us"
+        crumb="About Us"
+        title={
+          <>
+            Your Reliable Partner in <span className="text-gradient-gold">Total Workforce</span> &amp; Contracting
+            Solutions
+          </>
+        }
+        text="Based in Doha, Teravex bridges the gap between ambitious projects and dedicated talent — with a 5,000 to 6,000+ strong workforce and end-to-end recruitment under one roof."
       />
 
       {/* Who we are */}
-      <section id="who-we-are" className="scroll-mt-20 py-24 lg:py-32">
+      <section className="py-24 lg:py-32">
         <div className="container-x grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <div data-reveal>
             <span className="eyebrow">Who We Are</span>
@@ -134,31 +136,33 @@ export default function AboutPage() {
               skilled, semi-skilled, and general workers, we bridge the gap between ambitious projects and dedicated
               talent.
             </p>
+            <p className="mt-4 text-base leading-relaxed">
+              Whether you are launching a luxury hotel, scaling a restaurant chain, or managing massive construction and
+              oil &amp; gas infrastructure, Teravex provides end-to-end staffing, visa processing, and facility services
+              tailored to your exact operational demands.
+            </p>
           </div>
 
-          <div data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties} className="relative">
-            <div className="relative isolate aspect-[4/3] overflow-hidden rounded-[2rem] bg-navy-950 shadow-card-hover sm:aspect-[5/4]">
-              <Photo
-                name="site"
-                alt="Large construction site with cranes and steel frameworks"
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="absolute inset-0 -z-10 h-full w-full"
-              />
-              <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent" />
-            </div>
-            <dl className="absolute -bottom-8 left-4 right-4 grid grid-cols-2 gap-3 sm:left-8 sm:right-auto sm:w-[26rem]">
-              {[stats[0], stats[3]].map((st, i) => (
-                <div
-                  key={st.label}
-                  className={`flex flex-col-reverse rounded-2xl p-4 shadow-float sm:p-5 ${i === 0 ? "bg-navy-950 text-white" : "bg-gold-gradient text-navy-950"}`}
+          <div data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties} className="grid grid-cols-2 gap-4">
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`rounded-3xl p-6 sm:p-8 ${
+                  i === 0 || i === 3 ? "bg-navy-950 text-white" : "border border-line bg-surface"
+                }`}
+              >
+                <p
+                  className={`text-3xl font-extrabold tracking-tight sm:text-4xl ${
+                    i === 0 || i === 3 ? "text-gradient-gold" : "text-navy-900"
+                  }`}
                 >
-                  <dt className={`mt-1 text-xs font-semibold ${i === 0 ? "text-white/80" : "text-navy-950/80"}`}>{st.label}</dt>
-                  <dd className={`text-2xl font-extrabold tracking-tight sm:text-3xl ${i === 0 ? "text-gradient-gold" : ""}`}>
-                    <Counter value={st.value} suffix={st.suffix} />
-                  </dd>
-                </div>
-              ))}
-            </dl>
+                  <Counter value={s.value} suffix={s.suffix} />
+                </p>
+                <p className={`mt-2 text-sm font-semibold ${i === 0 || i === 3 ? "text-white/80" : "text-navy-900"}`}>
+                  {s.label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -178,10 +182,10 @@ export default function AboutPage() {
           <div className="mt-14 grid gap-6 lg:grid-cols-2">
             <article
               data-reveal
-              className="relative isolate flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-[2rem] bg-navy-950 p-8 text-white sm:p-10"
+              className="relative overflow-hidden rounded-[2rem] bg-navy-950 p-8 text-white sm:p-10"
             >
-              <Photo name="doha-sunset" alt="" sizes="(min-width: 1024px) 40vw, 100vw" className="absolute inset-0 -z-10 h-full w-full" />
-              <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/10" />
+              <div aria-hidden="true" className="absolute inset-0 bg-pattern-star opacity-70" />
+              <div aria-hidden="true" className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-gold-500/25 blur-3xl" />
               <div className="relative">
                 <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gold-gradient text-navy-950">
                   <Eye className="h-7 w-7" aria-hidden="true" />
@@ -196,16 +200,15 @@ export default function AboutPage() {
             <article
               data-reveal
               style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
-              className="relative isolate flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-[2rem] bg-navy-950 p-8 text-white shadow-card sm:p-10"
+              className="relative overflow-hidden rounded-[2rem] border border-line bg-white p-8 shadow-card sm:p-10"
             >
-              <Photo name="team-plan" alt="" sizes="(min-width: 1024px) 40vw, 100vw" className="absolute inset-0 -z-10 h-full w-full" />
-              <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/10" />
+              <div aria-hidden="true" className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-gold-100 blur-3xl" />
               <div className="relative">
-                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gold-gradient text-navy-950">
+                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-navy-900 text-gold-300">
                   <Target className="h-7 w-7" aria-hidden="true" />
                 </span>
-                <h3 className="mt-6 text-2xl font-extrabold text-white">Our Mission</h3>
-                <p className="mt-3 leading-relaxed text-white/75">
+                <h3 className="mt-6 text-2xl font-extrabold">Our Mission</h3>
+                <p className="mt-3 leading-relaxed">
                   To source, prepare and deploy skilled, semi-skilled and general workers quickly and ethically — in
                   full compliance with Qatar Labour Law — so our clients can focus on delivering their projects.
                 </p>
@@ -233,9 +236,7 @@ export default function AboutPage() {
       {/* Compliance & licensing */}
       <section className="relative isolate overflow-hidden bg-navy-950 py-24 lg:py-32">
         <div aria-hidden="true" className="absolute inset-0 -z-10">
-          <Photo name="contract" alt="" sizes="100vw" className="absolute inset-0 h-full w-full opacity-60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy-950/85 via-navy-950/60 to-navy-950/90" />
-          <div className="absolute inset-0 bg-pattern-star opacity-40" />
+          <div className="absolute inset-0 bg-pattern-star opacity-70" />
           <div className="absolute -left-40 top-1/3 h-[30rem] w-[30rem] rounded-full bg-maroon-600/45 blur-3xl" />
           <div className="absolute -right-32 -top-20 h-96 w-96 rounded-full bg-gold-500/15 blur-3xl" />
         </div>
@@ -281,30 +282,13 @@ export default function AboutPage() {
             }
             text="We combine scale, speed and full compliance — so you get the right people, on time, every time."
           />
-          <div className="mt-14 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-8">
-          <figure
-            data-reveal
-            className="relative isolate min-h-[18rem] overflow-hidden rounded-[2rem] bg-navy-950 shadow-card-hover sm:min-h-[24rem] lg:min-h-0"
-          >
-            <Photo
-              name="engineers-tablet"
-              alt="Site engineers in hard hats coordinating with a tablet and radio"
-              sizes="(min-width: 1024px) 35vw, 100vw"
-              className="absolute inset-0 -z-10 h-full w-full"
-            />
-            <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent" />
-            <figcaption className="absolute inset-x-6 bottom-6 flex items-center gap-3 text-white">
-              <Award className="h-6 w-6 shrink-0 text-gold-300" aria-hidden="true" />
-              <span className="text-sm font-semibold">Trusted by leading names in Qatar&apos;s construction and energy sectors</span>
-            </figcaption>
-          </figure>
-          <ul className="grid gap-4 sm:grid-cols-2">
+          <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {reasons.map(({ title, text, Icon }, i) => (
               <li
                 key={title}
                 data-reveal
                 style={{ "--reveal-delay": `${(i % 3) * 90}ms` } as React.CSSProperties}
-                className="group relative overflow-hidden rounded-3xl border border-line bg-white p-6 shadow-card transition-all duration-500 hover:-translate-y-1 hover:border-gold-300 hover:shadow-card-hover"
+                className="group relative overflow-hidden rounded-3xl border border-line bg-white p-7 shadow-card transition-all duration-500 hover:-translate-y-1 hover:border-gold-300 hover:shadow-card-hover"
               >
                 <span
                   aria-hidden="true"
@@ -320,7 +304,10 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
-          </div>
+          <p data-reveal className="mt-10 flex items-center justify-center gap-2 text-center text-sm font-medium text-navy-900">
+            <Award className="h-5 w-5 text-gold-600" aria-hidden="true" />
+            Trusted by leading names in Qatar&apos;s construction and energy sectors.
+          </p>
         </div>
       </section>
 

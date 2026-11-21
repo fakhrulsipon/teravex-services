@@ -8,8 +8,7 @@ import {
   TelegramIcon,
   WhatsAppIcon,
 } from "@/components/ui/BrandIcons";
-import ImageBanner from "@/components/ui/ImageBanner";
-import Photo from "@/components/ui/Photo";
+import PageHero from "@/components/ui/PageHero";
 import { site, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -60,11 +59,15 @@ const socials = [
 export default function ContactPage() {
   return (
     <>
-      <ImageBanner
-        src="/banners/contact"
-        alt="Business partners shaking hands in a modern office"
-        title="Contact Teravex — Let's Talk About Your Workforce Needs"
-        focus="50% 40%"
+      <PageHero
+        eyebrow="Contact Us"
+        crumb="Contact"
+        title={
+          <>
+            Let&apos;s Talk About Your <span className="text-gradient-gold">Workforce Needs</span>
+          </>
+        }
+        text="Our Doha team is available around the clock. Call, WhatsApp, email or send us a message — we'll respond quickly."
       />
 
       {/* Contact cards */}
@@ -142,9 +145,8 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="relative isolate overflow-hidden rounded-[2rem] bg-navy-950 p-6 text-white sm:p-8">
-              <Photo name="support-team" alt="" sizes="(min-width: 1024px) 40vw, 100vw" style={{ objectPosition: "50% 30%" }} className="absolute inset-0 -z-10 h-full w-full opacity-40" />
-              <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/50" />
+            <div className="relative overflow-hidden rounded-[2rem] bg-navy-950 p-6 text-white sm:p-8">
+              <div aria-hidden="true" className="absolute inset-0 bg-pattern-star opacity-70" />
               <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-3">
                   <Clock className="h-6 w-6 shrink-0 text-gold-300" aria-hidden="true" />

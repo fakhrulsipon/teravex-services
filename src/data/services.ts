@@ -25,10 +25,6 @@ export type Service = {
   short: string;
   description: string;
   icon: LucideIcon;
-  /** Alt text for the service photo (/public/photos/<slug>-*.webp) */
-  photoAlt: string;
-  /** CSS object-position keeping the subject in frame when the photo is cropped (default "50% 50%") */
-  photoFocus?: string;
   roleGroups: RoleGroup[];
   highlights: string[];
 };
@@ -43,7 +39,6 @@ export const services: Service[] = [
     description:
       "Providing polished, service-oriented hospitality professionals trained to uphold 5-star standards.",
     icon: Hotel,
-    photoAlt: "Uniformed doorman welcoming guests in a luxury hotel lobby",
     roleGroups: [
       { title: "Front Office & Guest Services", roles: ["Receptionist", "Concierge", "Bell Boy"] },
       {
@@ -67,8 +62,6 @@ export const services: Service[] = [
     description:
       "Specialized kitchen and dining staff for restaurants, cafes, cloud kitchens, and catering companies.",
     icon: UtensilsCrossed,
-    photoAlt: "Chef plating gourmet dishes in a professional restaurant kitchen",
-    photoFocus: "55% 75%",
     roleGroups: [
       {
         title: "Culinary Team",
@@ -88,7 +81,6 @@ export const services: Service[] = [
     description:
       "Certified tradespeople and site support teams for civil, MEP, and industrial construction projects.",
     icon: HardHat,
-    photoAlt: "Construction crew in hard hats working on a high-rise building site",
     roleGroups: [
       {
         title: "MEP & Fabrication",
@@ -111,8 +103,6 @@ export const services: Service[] = [
     description:
       "Safety-certified (HSE compliant) technical workforce specialized in upstream, midstream, and downstream oil & gas construction and maintenance projects across Qatar.",
     icon: Flame,
-    photoAlt: "Engineers in safety gear inspecting pipework at an oil and gas plant",
-    photoFocus: "78% 78%",
     roleGroups: [
       {
         title: "Project Coverage",
@@ -134,8 +124,6 @@ export const services: Service[] = [
     description:
       "Vetted, physically fit, and trained security personnel for commercial towers, hotels, construction sites, and residential compounds.",
     icon: ShieldCheck,
-    photoAlt: "Uniformed security officer with badge and radio on duty",
-    photoFocus: "40% 50%",
     roleGroups: [
       { title: "Security Personnel", roles: ["Security Guard", "Security Supervisor"] },
       {
@@ -158,7 +146,6 @@ export const services: Service[] = [
     description:
       "Comprehensive deep cleaning, post-construction cleanup, and daily janitorial maintenance for offices, malls, hotels, and industrial facilities.",
     icon: Sparkles,
-    photoAlt: "Rope-access cleaners washing the glass facade of a commercial tower",
     roleGroups: [
       {
         title: "Cleaning Services",
@@ -178,8 +165,6 @@ export const services: Service[] = [
     description:
       "Complete outdoor beautification, turf installation, irrigation maintenance, tree pruning, and regular garden upkeep for commercial and residential properties.",
     icon: Trees,
-    photoAlt: "Gardener in uniform trimming grass in a landscaped garden",
-    photoFocus: "70% 50%",
     roleGroups: [
       {
         title: "Landscaping Services",
@@ -204,7 +189,6 @@ export const services: Service[] = [
     description:
       "End-to-end international recruitment solutions — from candidate sourcing, trade testing, and medical clearance to Qatar work visa processing and onboarding.",
     icon: PlaneTakeoff,
-    photoAlt: "Professional arriving at an airport terminal with luggage",
     roleGroups: [
       {
         title: "Recruitment Process",

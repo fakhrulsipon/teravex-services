@@ -4,7 +4,6 @@ import ManpowerForm from "@/components/forms/ManpowerForm";
 import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { LinkButton } from "@/components/ui/Button";
 import ImageBanner from "@/components/ui/ImageBanner";
-import Photo from "@/components/ui/Photo";
 import { processSteps } from "@/data/company";
 import { site, whatsappLink } from "@/lib/site";
 
@@ -29,7 +28,6 @@ export default function RequestManpowerPage() {
         alt="Construction workers on a building site at sunset"
         title="Request Manpower — Tell Us What You Need, We'll Build Your Team"
         scrollTo="request-form"
-        scrollLabel="Scroll to the request form"
       />
 
       <section id="request-form" className="relative scroll-mt-20 bg-surface py-16 lg:py-24">
@@ -54,9 +52,9 @@ export default function RequestManpowerPage() {
               </ol>
             </div>
 
-            <div className="relative isolate overflow-hidden rounded-[1.75rem] bg-navy-950 p-6 pt-40 text-white sm:p-7 sm:pt-44">
-              <Photo name="support-agent" alt="" sizes="(min-width: 1024px) 22rem, 100vw" style={{ objectPosition: "60% 30%" }} className="absolute inset-x-0 top-0 -z-10 h-64 w-full" />
-              <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-navy-950/90 to-navy-950" />
+            <div className="relative overflow-hidden rounded-[1.75rem] bg-navy-950 p-6 text-white sm:p-7">
+              <div aria-hidden="true" className="absolute inset-0 bg-pattern-star opacity-70" />
+              <div aria-hidden="true" className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gold-500/25 blur-3xl" />
               <div className="relative">
                 <h2 className="text-lg font-extrabold text-white">Prefer to Talk?</h2>
                 <p className="mt-1 text-sm text-white/65">Our team is available 24/7.</p>

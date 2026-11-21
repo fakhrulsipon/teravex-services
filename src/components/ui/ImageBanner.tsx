@@ -6,8 +6,6 @@ type Props = {
   title: string;
   /** Id of the section the scroll cue jumps to. */
   scrollTo?: string;
-  /** Accessible label for the scroll cue. */
-  scrollLabel?: string;
   /** CSS object-position for the photo (keeps the subject in frame on narrow screens). */
   focus?: string;
 };
@@ -15,14 +13,7 @@ type Props = {
 const widths = [960, 1600, 2400];
 
 /** Full-bleed, text-free photo banner used at the top of inner pages. */
-export default function ImageBanner({
-  src,
-  alt,
-  title,
-  scrollTo,
-  scrollLabel = "Scroll down",
-  focus = "35% 70%",
-}: Props) {
+export default function ImageBanner({ src, alt, title, scrollTo, focus = "35% 70%" }: Props) {
   return (
     <section className="relative isolate h-[26rem] overflow-hidden bg-navy-950 sm:h-[32rem] md:h-[36rem] lg:h-[42rem] xl:h-[46rem]">
       <h1 className="sr-only">{title}</h1>
@@ -64,7 +55,7 @@ export default function ImageBanner({
       {scrollTo ? (
         <a
           href={`#${scrollTo}`}
-          aria-label={scrollLabel}
+          aria-label="Scroll to the request form"
           className="group absolute bottom-6 left-1/2 flex h-12 w-7 -translate-x-1/2 justify-center rounded-full border-2 border-white/50 pt-2 backdrop-blur-sm transition-colors hover:border-gold-400 sm:bottom-10"
         >
           <span className="h-2 w-1 animate-scroll-dot rounded-full bg-gold-400" />
