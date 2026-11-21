@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import ManpowerForm from "@/components/forms/ManpowerForm";
 import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { LinkButton } from "@/components/ui/Button";
-import PageHero from "@/components/ui/PageHero";
+import ImageBanner from "@/components/ui/ImageBanner";
 import { processSteps } from "@/data/company";
 import { site, whatsappLink } from "@/lib/site";
 
@@ -23,18 +23,14 @@ const trust = [
 export default function RequestManpowerPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Request Manpower"
-        crumb="Request Manpower"
-        title={
-          <>
-            Tell Us What You Need. <span className="text-gradient-gold">We&apos;ll Build Your Team.</span>
-          </>
-        }
-        text="Share your requirement and receive a tailored quote — skilled, compliant workers from 8+ nationalities, ready to deploy across Qatar."
+      <ImageBanner
+        src="/banners/request-manpower"
+        alt="Construction workers on a building site at sunset"
+        title="Request Manpower — Tell Us What You Need, We'll Build Your Team"
+        scrollTo="request-form"
       />
 
-      <section className="relative bg-surface py-16 lg:py-24">
+      <section id="request-form" className="relative scroll-mt-20 bg-surface py-16 lg:py-24">
         <div className="container-x grid items-start gap-8 lg:grid-cols-[1fr_22rem] lg:gap-10">
           <ManpowerForm />
 

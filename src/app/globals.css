@@ -44,6 +44,30 @@
   --animate-float: float 6s ease-in-out infinite;
   --animate-marquee: marquee 45s linear infinite;
   --animate-shine: shine 3.5s ease-in-out infinite;
+  --animate-ken-burns: ken-burns 20s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-scroll-dot: scroll-dot 2s ease-in-out infinite;
+
+  @keyframes ken-burns {
+    from {
+      transform: scale(1.14);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  @keyframes scroll-dot {
+    0% {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    40% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
 
   @keyframes fade-up {
     from {
