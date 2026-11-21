@@ -1,5 +1,6 @@
 import { ArrowRight, Clock, ShieldCheck } from "lucide-react";
 import { LinkButton } from "@/components/ui/Button";
+import Photo from "@/components/ui/Photo";
 import { nationalities } from "@/data/company";
 import { services } from "@/data/services";
 
@@ -100,9 +101,19 @@ export default function Hero() {
     <section className="relative isolate overflow-hidden bg-navy-950 pb-36 pt-32 sm:pt-36 lg:pb-44 lg:pt-48">
       {/* backdrop */}
       <div aria-hidden="true" className="absolute inset-0 -z-10">
+        <Photo
+          name="doha-night"
+          alt=""
+          sizes="100vw"
+          priority
+          style={{ objectPosition: "60% 55%" }}
+          className="absolute inset-0 h-full w-full animate-ken-burns opacity-60"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/80 to-navy-950/35" />
+        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-navy-950 to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_75%_30%,rgb(243_167_46/0.18),transparent_70%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_0%_100%,rgb(141_27_61/0.35),transparent_70%)]" />
-        <div className="absolute inset-0 bg-grid-lines mask-radial" />
+        <div className="absolute inset-0 bg-grid-lines opacity-60 mask-radial" />
         <div className="absolute inset-0 bg-pattern-star opacity-50 mask-fade-b" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-navy-950" />
       </div>

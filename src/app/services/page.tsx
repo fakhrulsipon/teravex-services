@@ -4,9 +4,9 @@ import Link from "next/link";
 import CtaBand from "@/components/sections/CtaBand";
 import JobDirectory from "@/components/services/JobDirectory";
 import ServiceDetail from "@/components/services/ServiceDetail";
-import PageHero from "@/components/ui/PageHero";
+import ImageBanner from "@/components/ui/ImageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { directoryRoles, services } from "@/data/services";
+import { services } from "@/data/services";
 
 export const metadata: Metadata = {
   title: "Services — Manpower Supply, Staffing & Recruitment in Qatar",
@@ -15,35 +15,17 @@ export const metadata: Metadata = {
   alternates: { canonical: "/services/" },
 };
 
-const heroStats = [
-  { value: String(services.length), label: "Service lines" },
-  { value: String(directoryRoles.length), label: "Positions listed" },
-  { value: "8+", label: "Nationalities" },
-  { value: "24/7", label: "Deployment support" },
-];
-
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Our Services"
-        crumb="Services"
-        title={
-          <>
-            Complete Workforce Solutions for <span className="text-gradient-gold">Every Sector</span>
-          </>
-        }
-        text="From 5-star hotels to oil & gas sites — eight specialised service lines backed by a 5,000+ strong, multi-national workforce ready to deploy across Qatar."
-      >
-        <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 backdrop-blur">
-          {heroStats.map((s) => (
-            <div key={s.label} className="bg-navy-950/60 p-5 sm:p-6">
-              <dt className="text-xs font-medium uppercase tracking-wider text-white/50">{s.label}</dt>
-              <dd className="mt-1 text-3xl font-extrabold text-gradient-gold">{s.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </PageHero>
+      <ImageBanner
+        src="/banners/services"
+        alt="Doha skyline reflected in the water at sunset"
+        title="Our Services — Complete Workforce Solutions for Every Sector in Qatar"
+        scrollTo="directory"
+        scrollLabel="Scroll to our services"
+        focus="50% 60%"
+      />
 
       {/* Sticky sector navigation */}
       <nav

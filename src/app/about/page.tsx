@@ -22,7 +22,8 @@ import Clients from "@/components/sections/Clients";
 import CtaBand from "@/components/sections/CtaBand";
 import Nationalities from "@/components/sections/Nationalities";
 import Counter from "@/components/ui/Counter";
-import PageHero from "@/components/ui/PageHero";
+import ImageBanner from "@/components/ui/ImageBanner";
+import Photo from "@/components/ui/Photo";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { stats } from "@/data/company";
 import { site } from "@/lib/site";
@@ -110,20 +111,17 @@ const reasons = [
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        eyebrow="About Us"
-        crumb="About Us"
-        title={
-          <>
-            Your Reliable Partner in <span className="text-gradient-gold">Total Workforce</span> &amp; Contracting
-            Solutions
-          </>
-        }
-        text="Based in Doha, Teravex bridges the gap between ambitious projects and dedicated talent — with a 5,000 to 6,000+ strong workforce and end-to-end recruitment under one roof."
+      <ImageBanner
+        src="/banners/about"
+        alt="Traditional dhow boat sailing in front of the Doha skyline"
+        title="About Teravex — Your Reliable Partner in Total Workforce & Contracting Solutions"
+        scrollTo="who-we-are"
+        scrollLabel="Scroll to who we are"
+        focus="55% 60%"
       />
 
       {/* Who we are */}
-      <section className="py-24 lg:py-32">
+      <section id="who-we-are" className="scroll-mt-20 py-24 lg:py-32">
         <div className="container-x grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <div data-reveal>
             <span className="eyebrow">Who We Are</span>
@@ -136,33 +134,31 @@ export default function AboutPage() {
               skilled, semi-skilled, and general workers, we bridge the gap between ambitious projects and dedicated
               talent.
             </p>
-            <p className="mt-4 text-base leading-relaxed">
-              Whether you are launching a luxury hotel, scaling a restaurant chain, or managing massive construction and
-              oil &amp; gas infrastructure, Teravex provides end-to-end staffing, visa processing, and facility services
-              tailored to your exact operational demands.
-            </p>
           </div>
 
-          <div data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties} className="grid grid-cols-2 gap-4">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className={`rounded-3xl p-6 sm:p-8 ${
-                  i === 0 || i === 3 ? "bg-navy-950 text-white" : "border border-line bg-surface"
-                }`}
-              >
-                <p
-                  className={`text-3xl font-extrabold tracking-tight sm:text-4xl ${
-                    i === 0 || i === 3 ? "text-gradient-gold" : "text-navy-900"
-                  }`}
+          <div data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties} className="relative">
+            <div className="relative isolate aspect-[4/3] overflow-hidden rounded-[2rem] bg-navy-950 shadow-card-hover sm:aspect-[5/4]">
+              <Photo
+                name="site"
+                alt="Large construction site with cranes and steel frameworks"
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="absolute inset-0 -z-10 h-full w-full"
+              />
+              <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent" />
+            </div>
+            <dl className="absolute -bottom-8 left-4 right-4 grid grid-cols-2 gap-3 sm:left-8 sm:right-auto sm:w-[26rem]">
+              {[stats[0], stats[3]].map((st, i) => (
+                <div
+                  key={st.label}
+                  className={`flex flex-col-reverse rounded-2xl p-4 shadow-float sm:p-5 ${i === 0 ? "bg-navy-950 text-white" : "bg-gold-gradient text-navy-950"}`}
                 >
-                  <Counter value={s.value} suffix={s.suffix} />
-                </p>
-                <p className={`mt-2 text-sm font-semibold ${i === 0 || i === 3 ? "text-white/80" : "text-navy-900"}`}>
-                  {s.label}
-                </p>
-              </div>
-            ))}
+                  <dt className={`mt-1 text-xs font-semibold ${i === 0 ? "text-white/80" : "text-navy-950/80"}`}>{st.label}</dt>
+                  <dd className={`text-2xl font-extrabold tracking-tight sm:text-3xl ${i === 0 ? "text-gradient-gold" : ""}`}>
+                    <Counter value={st.value} suffix={st.suffix} />
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </section>

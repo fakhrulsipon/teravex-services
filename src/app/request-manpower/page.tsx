@@ -28,6 +28,7 @@ export default function RequestManpowerPage() {
         alt="Construction workers on a building site at sunset"
         title="Request Manpower — Tell Us What You Need, We'll Build Your Team"
         scrollTo="request-form"
+        scrollLabel="Scroll to the request form"
       />
 
       <section id="request-form" className="relative scroll-mt-20 bg-surface py-16 lg:py-24">

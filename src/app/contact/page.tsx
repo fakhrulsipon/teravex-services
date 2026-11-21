@@ -8,7 +8,7 @@ import {
   TelegramIcon,
   WhatsAppIcon,
 } from "@/components/ui/BrandIcons";
-import PageHero from "@/components/ui/PageHero";
+import ImageBanner from "@/components/ui/ImageBanner";
 import { site, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -59,15 +59,11 @@ const socials = [
 export default function ContactPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Contact Us"
-        crumb="Contact"
-        title={
-          <>
-            Let&apos;s Talk About Your <span className="text-gradient-gold">Workforce Needs</span>
-          </>
-        }
-        text="Our Doha team is available around the clock. Call, WhatsApp, email or send us a message — we'll respond quickly."
+      <ImageBanner
+        src="/banners/contact"
+        alt="Business partners shaking hands in a modern office"
+        title="Contact Teravex — Let's Talk About Your Workforce Needs"
+        focus="50% 40%"
       />
 
       {/* Contact cards */}
