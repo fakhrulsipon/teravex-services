@@ -33,7 +33,7 @@ export default function Footer() {
 
       <div className="container-x grid grid-cols-2 gap-x-6 gap-y-12 py-16 lg:grid-cols-[1.35fr_0.8fr_1fr_1.15fr] lg:gap-12 lg:py-20">
         <div className="col-span-2 sm:col-span-1">
-          <Logo variant="full" />
+          <Logo id="footer" size="lg" />
           <p className="mt-6 max-w-sm text-sm leading-relaxed">
             A premier manpower supply, contracting and overseas recruitment company based in Doha, delivering 5,000+
             skilled, semi-skilled and general workers across Qatar.

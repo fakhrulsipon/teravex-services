@@ -126,7 +126,7 @@ export default function Header() {
             }`}
           >
             <div className="flex items-center">
-              <Logo />
+              <Logo id="header" />
             </div>
 
             <nav aria-label="Main" className="hidden items-stretch lg:flex">
@@ -275,7 +275,7 @@ export default function Header() {
         >
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-pattern-star opacity-60 mask-fade-b" />
           <div className="relative flex h-20 items-center justify-between border-b border-white/10 px-5">
-            <Logo />
+            <Logo id="drawer" />
             <button
               ref={closeBtn}
               type="button"
