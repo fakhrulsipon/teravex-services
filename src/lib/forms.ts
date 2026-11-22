@@ -1,6 +1,6 @@
 import { services } from "@/data/services";
 
-export const sectorOptions = services.filter((s) => !s.href).map((s) => ({ value: s.slug, label: s.label }));
+export const sectorOptions = services.filter((s) => !s.digital).map((s) => ({ value: s.slug, label: s.label }));
 
 export const nationalityOptions = [
   "Any",

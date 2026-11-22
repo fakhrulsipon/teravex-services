@@ -9,6 +9,7 @@ import TrustedCompanies from "@/components/home/TrustedCompanies";
 import Clients from "@/components/sections/Clients";
 import Nationalities from "@/components/sections/Nationalities";
 import ProcessSteps from "@/components/sections/ProcessSteps";
+import ProductsShowcase from "@/components/sections/ProductsShowcase";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
@@ -24,9 +25,6 @@ export default function HomePage() {
         To bring it back: uncomment it and its import, then restore the extra space it overlaps into:
         Hero section "pb-20 … lg:pb-28" → "pb-36 … lg:pb-44", and TrustedCompanies "mt-16 sm:mt-20 lg:mt-24".
       */}
-      <TrustedCompanies />
-      <AboutIntro />
-
       <section id="services" className="relative overflow-hidden bg-surface py-24 lg:py-32">
         <div aria-hidden="true" className="absolute inset-0 bg-pattern-star-dark mask-fade-b" />
         <div className="container-x relative">
@@ -41,6 +39,11 @@ export default function HomePage() {
           <ServicesExplorer />
         </div>
       </section>
+
+      <ProductsShowcase className="bg-white" moreLink />
+
+      <TrustedCompanies />
+      <AboutIntro />
 
       <RolesMarquee />
       <ProcessSteps />

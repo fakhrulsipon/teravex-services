@@ -9,7 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/services/", priority: 0.9 },
     { path: "/request-manpower/", priority: 0.9 },
     { path: "/about/", priority: 0.7 },
-    { path: "/digital-solutions/", priority: 0.8 },
     { path: "/gallery/", priority: 0.6 },
     { path: "/contact/", priority: 0.7 },
   ];
