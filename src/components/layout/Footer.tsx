@@ -2,7 +2,7 @@ import { ArrowUpRight, Clock, Globe, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TelegramIcon, WhatsAppIcon } from "@/components/ui/BrandIcons";
 import Logo from "@/components/ui/Logo";
-import { services } from "@/data/services";
+import { serviceHref, services } from "@/data/services";
 import { site, whatsappLink } from "@/lib/site";
 
 const quickLinks = [
@@ -33,7 +33,7 @@ export default function Footer() {
 
       <div className="container-x grid grid-cols-2 gap-x-6 gap-y-12 py-16 lg:grid-cols-[1.35fr_0.8fr_1fr_1.15fr] lg:gap-12 lg:py-20">
         <div className="col-span-2 sm:col-span-1">
-          <Logo id="footer" />
+          <Logo variant="full" />
           <p className="mt-6 max-w-sm text-sm leading-relaxed">
             A premier manpower supply, contracting and overseas recruitment company based in Doha, delivering 5,000+
             skilled, semi-skilled and general workers across Qatar.
@@ -74,7 +74,7 @@ export default function Footer() {
           <ul className="mt-5 space-y-3 text-sm">
             {services.map((s) => (
               <li key={s.slug}>
-                <Link href={`/services#${s.slug}`} className="transition-colors hover:text-gold-300">
+                <Link href={serviceHref(s)} className="transition-colors hover:text-gold-300">
                   {s.title}
                 </Link>
               </li>

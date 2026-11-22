@@ -84,9 +84,15 @@ export default function ServiceDetail({ service: s, index, total }: { service: S
           </div>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <LinkButton href={`/request-manpower?sector=${s.slug}`}>
-              Request {s.label} Staff <ArrowRight className="h-4 w-4" />
-            </LinkButton>
+            {s.href ? (
+              <LinkButton href={s.href}>
+                Explore {s.label} <ArrowRight className="h-4 w-4" />
+              </LinkButton>
+            ) : (
+              <LinkButton href={`/request-manpower?sector=${s.slug}`}>
+                Request {s.label} Staff <ArrowRight className="h-4 w-4" />
+              </LinkButton>
+            )}
             <LinkButton
               href={whatsappLink(`Hello Teravex, I'm interested in your ${s.title} service.`)}
               variant="outline-dark"

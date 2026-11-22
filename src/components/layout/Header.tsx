@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TelegramIcon, WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { buttonClass } from "@/components/ui/Button";
 import Logo from "@/components/ui/Logo";
-import { services } from "@/data/services";
+import { serviceHref, services } from "@/data/services";
 import { nav, site, whatsappLink } from "@/lib/site";
 
 const normalize = (p: string) => (p.length > 1 && p.endsWith("/") ? p.slice(0, -1) : p);
@@ -175,7 +175,7 @@ export default function Header() {
                           {services.map((s) => (
                             <Link
                               key={s.slug}
-                              href={`/services#${s.slug}`}
+                              href={serviceHref(s)}
                               onClick={closeAll}
                               className="group flex items-start gap-3 rounded-2xl p-3 transition-colors hover:bg-white/[0.06]"
                             >
@@ -275,7 +275,7 @@ export default function Header() {
         >
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-pattern-star opacity-60 mask-fade-b" />
           <div className="relative flex h-20 items-center justify-between border-b border-white/10 px-5">
-            <Logo id="drawer" />
+            <Logo />
             <button
               ref={closeBtn}
               type="button"
@@ -325,7 +325,7 @@ export default function Header() {
                           {services.map((s) => (
                             <li key={s.slug}>
                               <Link
-                                href={`/services#${s.slug}`}
+                                href={serviceHref(s)}
                                 onClick={closeAll}
                                 className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[0.92rem] text-white/70 hover:bg-white/5 hover:text-white"
                               >

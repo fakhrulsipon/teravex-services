@@ -3,7 +3,7 @@ import PhotoCardContent, {
   photoCardClass,
   photoCardItemClass,
 } from "@/components/ui/PhotoCard";
-import { services } from "@/data/services";
+import { serviceHref, services } from "@/data/services";
 
 /** Home "Our Core Services" grid — each photo card links to that service on the Services page. */
 export default function ServicesExplorer() {
@@ -19,7 +19,7 @@ export default function ServicesExplorer() {
             { "--reveal-delay": `${(i % 3) * 80}ms` } as React.CSSProperties
           }
         >
-          <Link href={`/services#${s.slug}`} className={photoCardClass}>
+          <Link href={serviceHref(s)} className={photoCardClass}>
             <PhotoCardContent
               name={s.slug}
               alt={s.photoAlt}

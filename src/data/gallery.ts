@@ -53,11 +53,16 @@ export const galleryPhotos: GalleryPhoto[] = [
   { name: "gardener", alt: "Gardener in uniform trimming a hedge with shears", category: "landscaping" },
   { name: "hedge-trimming", alt: "Gardener shaping a hedge with an electric trimmer", category: "landscaping" },
 
-  // Facility Management
-  { name: "facility-management", alt: "Maintenance technician inspecting fire-safety pipework in a plant room", category: "facility-management", focus: "35% 50%" },
-
   // Overseas Recruitment
   { name: "overseas-recruitment", alt: "Traveller with luggage walking through an airport corridor", category: "overseas-recruitment" },
   { name: "airport", alt: "Travellers with luggage in a sunlit airport terminal", category: "overseas-recruitment" },
   { name: "multinational", alt: "Smiling engineers from different backgrounds in hard hats", category: "overseas-recruitment" },
+
+  // Website Development
+  { name: "web-development", alt: "Web designer's dual-monitor workstation showing website layouts", category: "web-development", focus: "70% 50%" },
+  { name: "web-coding", alt: "Developer writing website code on a laptop", category: "web-development" },
+
+  // Mobile App Development
+  { name: "mobile-app", alt: "Smartphone running a colourful business app beside a laptop", category: "mobile-app" },
+  { name: "app-design", alt: "Designer testing a mobile app prototype over hand-drawn wireframes", category: "mobile-app" },
 ];

@@ -8,7 +8,8 @@ import {
   Sparkles,
   Trees,
   UtensilsCrossed,
-  Wrench,
+  MonitorSmartphone,
+  Smartphone,
 } from "lucide-react";
 
 export type RoleGroup = {
@@ -32,7 +33,12 @@ export type Service = {
   photoFocus?: string;
   roleGroups: RoleGroup[];
   highlights: string[];
+  /** Set for services with their own page (digital services) — links go here instead of /services#slug. */
+  href?: string;
 };
+
+/** Where a service card / menu item should link to. */
+export const serviceHref = (s: Service) => s.href ?? `/services#${s.slug}`;
 
 export const services: Service[] = [
   {
@@ -197,26 +203,6 @@ export const services: Service[] = [
     highlights: ["Commercial & residential", "Heat-adapted planting care", "Scheduled maintenance plans"],
   },
   {
-    slug: "facility-management",
-    label: "Facility Management",
-    navLabel: "Facility",
-    title: "Facility Management & Maintenance",
-    short: "MEP, HVAC and general maintenance teams for buildings and sites.",
-    description:
-      "Skilled maintenance technicians who keep commercial towers, hotels, malls and industrial facilities running smoothly — from MEP and HVAC to fire-safety systems and general upkeep.",
-    icon: Wrench,
-    photoAlt: "Maintenance technician in hi-vis gear inspecting fire-safety pipework in a plant room",
-    photoFocus: "35% 50%",
-    roleGroups: [
-      {
-        title: "Maintenance Team",
-        roles: ["HVAC Technician", "Electrician", "Plumber", "Maintenance Technician", "Handyman"],
-      },
-      { title: "Facilities Covered", roles: ["Commercial Towers", "Hotels", "Malls", "Industrial Facilities"] },
-    ],
-    highlights: ["Planned & reactive maintenance", "MEP & HVAC skilled", "Round-the-clock support"],
-  },
-  {
     slug: "overseas-recruitment",
     label: "Overseas Recruitment",
     navLabel: "Recruitment",
@@ -240,6 +226,47 @@ export const services: Service[] = [
     ],
     highlights: ["End-to-end, single point of contact", "8+ source nationalities", "Visa & onboarding handled"],
   },
+  {
+    slug: "web-development",
+    label: "Website Development",
+    navLabel: "Websites",
+    title: "Website Design & Development",
+    short: "Fast, modern business websites, online stores and web portals.",
+    description:
+      "Professional, mobile-friendly websites built to win customers — from company sites and landing pages to e-commerce stores and custom web portals.",
+    icon: MonitorSmartphone,
+    photoAlt: "Web designer's dual-monitor workstation showing website layouts",
+    photoFocus: "70% 50%",
+    href: "/digital-solutions#web-development",
+    roleGroups: [
+      {
+        title: "What We Build",
+        roles: ["Corporate Websites", "E-commerce Stores", "Landing Pages", "Web Portals & Dashboards"],
+      },
+      { title: "Included", roles: ["Responsive Design", "SEO-Ready Build", "Hosting & Maintenance"] },
+    ],
+    highlights: ["Mobile-friendly & fast", "Arabic & English ready", "SEO-ready build"],
+  },
+  {
+    slug: "mobile-app",
+    label: "Mobile App Development",
+    navLabel: "Mobile Apps",
+    title: "Mobile App Development",
+    short: "Android & iOS apps with clean design, from idea to app store.",
+    description:
+      "Android and iOS apps designed around your customers — booking, delivery, e-commerce and business apps, launched on the stores and supported after go-live.",
+    icon: Smartphone,
+    photoAlt: "Hand holding a smartphone running a colourful business app beside a laptop",
+    href: "/digital-solutions#mobile-app",
+    roleGroups: [
+      {
+        title: "What We Build",
+        roles: ["Android Apps", "iOS Apps", "Booking & Delivery Apps", "Business & Admin Apps"],
+      },
+      { title: "Included", roles: ["UI/UX Design", "App Store Publishing", "Updates & Support"] },
+    ],
+    highlights: ["Android & iOS", "Clean, modern UI", "Store launch & support"],
+  },
 ];
 
 export const serviceBySlug = (slug: string) => services.find((s) => s.slug === slug);
@@ -261,7 +288,6 @@ const hireableGroups: Record<string, string[]> = {
   security: ["Security Personnel"],
   cleaning: ["Cleaning Staff"],
   landscaping: ["Landscaping Staff"],
-  "facility-management": ["Maintenance Team"],
 };
 
 export type DirectoryRole = {
