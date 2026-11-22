@@ -3,7 +3,7 @@ import { LinkButton } from "@/components/ui/Button";
 import Photo from "@/components/ui/Photo";
 import { services } from "@/data/services";
 
-/** Background photo widths in /public/banners/home-<w>.webp (Doha skyline at night). */
+/** Background photo widths in /public/banners/home-<w>.webp (Doha skyline at golden hour, Pexels 6501897). */
 const BG_WIDTHS = [960, 1600, 2400, 3200];
 
 /** Turns a full disc into a thin ring (used for the rotating gold light ring). */
@@ -81,7 +81,7 @@ function HeroOrbit() {
 export default function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 pb-20 pt-32 sm:pt-36 lg:pb-28 lg:pt-48">
-      {/* backdrop — crisp Doha skyline at night, shaded only where the copy sits */}
+      {/* backdrop — Doha skyline at golden hour, shaded only where the copy sits */}
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         {/* eslint-disable-next-line @next/next/no-img-element -- static export: no Next image optimiser */}
         <img
@@ -92,7 +92,7 @@ export default function Hero() {
           sizes="100vw"
           alt=""
           width={3200}
-          height={2400}
+          height={1800}
           fetchPriority="high"
           style={{ objectPosition: "50% 38%" }}
           className="absolute inset-0 h-full w-full animate-ken-burns object-cover brightness-110 saturate-[1.15]"
