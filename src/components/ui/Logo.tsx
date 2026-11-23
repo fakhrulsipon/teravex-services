@@ -17,7 +17,7 @@ export default function Logo({ size = "md", className = "" }: Props) {
     <Link
       href="/"
       aria-label="Teravex Contracting & Services W.L.L — Home"
-      className={`group inline-flex shrink-0 items-center ${className}`}
+      className={`group inline-flex shrink-0 items-center gap-3 ${className}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element -- static export, responsive srcSet provided manually */}
       <img
@@ -30,6 +30,12 @@ export default function Logo({ size = "md", className = "" }: Props) {
         decoding="async"
         className={`${lg ? "h-32 w-32" : "h-14 w-14 sm:h-16 sm:w-16"} shrink-0 drop-shadow-[0_0_12px_rgb(243_167_46/0.25)] transition-transform duration-500 group-hover:rotate-6`}
       />
+      {/* Navbar only — the larger footer seal stands on its own */}
+      {!lg ? (
+        <span className="text-[1.45rem] font-[800] leading-none tracking-[0.12em] text-white sm:text-[1.6rem]">
+          TERAVEX
+        </span>
+      ) : null}
     </Link>
   );
 }
