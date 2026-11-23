@@ -55,7 +55,7 @@ export const services: Service[] = [
     photoAlt: "Web designer's dual-monitor workstation showing website layouts",
     photoFocus: "70% 50%",
     digital: true,
-    cta: { label: "View Our Products", href: "/#products" },
+    cta: { label: "View Our Products", href: "/products" },
     roleGroups: [
       {
         title: "What We Build",
