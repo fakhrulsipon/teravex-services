@@ -8,8 +8,8 @@ type Props = {
 };
 
 /**
- * Site logo — the company seal exactly as designed, recoloured to the site's gold
- * on a transparent background (/public/brand/seal-{192,384}.webp).
+ * Site logo — the icon used as the favicon (gold TVX emblem on navy squircle)
+ * accompanied by the TERAVEX brand text.
  */
 export default function Logo({ size = "md", className = "" }: Props) {
   const lg = size === "lg";
@@ -19,23 +19,26 @@ export default function Logo({ size = "md", className = "" }: Props) {
       aria-label="Teravex Contracting & Services W.L.L — Home"
       className={`group inline-flex shrink-0 items-center gap-3 ${className}`}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element -- static export, responsive srcSet provided manually */}
+      {/* eslint-disable-next-line @next/next/no-img-element -- static export, crisp SVG logo from favicon */}
       <img
-        src="/brand/seal-192.webp"
-        srcSet="/brand/seal-192.webp 192w, /brand/seal-384.webp 384w"
-        sizes={lg ? "128px" : "48px"}
+        src="/brand/logo.svg"
         alt="Teravex Contracting & Services W.L.L"
-        width={192}
-        height={192}
+        width={lg ? 64 : 48}
+        height={lg ? 64 : 48}
         decoding="async"
-        className={`${lg ? "h-32 w-32" : "h-11 w-11 sm:h-12 sm:w-12"} shrink-0 drop-shadow-[0_0_12px_rgb(243_167_46/0.25)] transition-transform duration-500 group-hover:rotate-6`}
+        className={`${
+          lg ? "h-14 w-14 sm:h-16 sm:w-16" : "h-10 w-10 sm:h-11 sm:w-11"
+        } shrink-0 rounded-xl drop-shadow-[0_0_12px_rgb(243_167_46/0.25)] transition-transform duration-300 group-hover:scale-105`}
       />
-      {/* Navbar only — the larger footer seal stands on its own */}
-      {!lg ? (
-        <span className="text-[1.45rem] font-[800] leading-none tracking-[0.12em] text-white sm:text-[1.6rem]">
-          TERAVEX
-        </span>
-      ) : null}
+      <span
+        className={`${
+          lg
+            ? "text-[1.65rem] sm:text-[1.85rem]"
+            : "text-[1.45rem] sm:text-[1.6rem]"
+        } font-[800] leading-none tracking-[0.12em] text-white transition-colors duration-300 group-hover:text-gold-200`}
+      >
+        TERAVEX
+      </span>
     </Link>
   );
 }
